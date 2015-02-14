@@ -29,6 +29,7 @@ class Cli
   end
 
   def get_input
+    print "> "
     gets.strip.downcase
   end
 
