@@ -27,12 +27,13 @@ class Scores
 
   def show_scores
     puts "========#{@date_title}========"
-    if @scores
+    if !@scores.empty?
       @scores.each do |game_obj|
         game_obj.show_score
       end
     else
       puts "No games today!"
+      puts ""
     end
   end
 end
