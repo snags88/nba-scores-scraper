@@ -5,7 +5,7 @@ class Scores
 
   def initialize(sport, date)
     @sport = sport
-    @url = "http://espn.go.com/#{sport}/scoreboard?date=#{date}"
+    @url = "http://espn.go.com/#{sport}/scoreboard/_/date/#{date}"
     scraper
     show_scores
   end
@@ -17,11 +17,12 @@ class Scores
   end
 
   def scrape_date(data)
-    data.css("div.key-dates h2").text
+    data.css("#sbpDate").text
   end
 
   def scrape_scores(data)
-    games_doc = data.css("div.gameDay-Container div[class*='gameCount']")
+    games_doc = data.css("article.scoreboard")
+    binding.pry
     games_doc.collect {|game_info| Game.new(game_info)} # => [#<Game1>, #<Game2>, ...]
   end
 

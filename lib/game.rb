@@ -4,11 +4,11 @@ class Game
   attr_reader :game_status, :away_name, :home_name, :away_final_score, :home_final_score
 
   def initialize (game_info)
-    @game_status = game_info.css("div.game-status p").text
-    @away_name = game_info.css("span[id*='aTeamName'] a").text
-    @home_name = game_info.css("span[id*='hTeamName'] a").text
-    @away_final_score = game_info.css("ul[id*='aScores'] li.finalScore").text
-    @home_final_score = game_info.css("ul[id*='hScores'] li.finalScore").text
+    @game_status = game_info.css("tr.sb-linescore th.date-time").text
+    @away_name = game_info.css("tr.away span.sb-team-short").text
+    @home_name = game_info.css("tr.home span.sb-team-short").text
+    @away_final_score = game_info.css("tr.away td.total span").text
+    @home_final_score = game_info.css("tr.home td.total span").text
     @winner = winning_team
   end
 
